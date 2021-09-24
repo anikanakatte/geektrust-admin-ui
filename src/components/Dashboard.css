@@ -1,0 +1,31 @@
+.search {
+  width: 100%;
+  padding: 0.3rem;
+  margin: 1.1rem auto;
+}
+
+.userTable {
+  border-collapse: collapse;
+}
+
+.userTable th,
+.userTable td {
+  border-bottom: 1px solid black;
+}
+
+.userTable td {
+  padding: 0.5rem;
+}
+
+.deleteBtn {
+  margin: 2rem 0;
+  padding: 0.5rem 1rem;
+
+  border: none;
+  border-radius: 1rem;
+
+  background-color: rgb(243, 61, 91);
+  color: white;
+
+  font-weight: bold;
+}

@@ -1,0 +1,41 @@
+.pageBtn {
+  border: 1px solid #2196f3;
+  border-radius: 50%;
+
+  width: 2rem;
+  height: 2rem;
+  line-height: 2rem;
+
+  margin: 0 0.2rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+}
+
+.controlBtn {
+  border: none;
+  border-radius: 50%;
+
+  width: 2rem;
+  height: 2rem;
+  line-height: 2rem;
+
+  margin: 0 0.2rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #2196f3;
+  color: #fff;
+}
+
+.controlBtn:disabled {
+  background-color: #fbfbfb;
+  color: #e0e0e0;
+
+  border: 1px solid #e0e0e0;
+}
