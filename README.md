@@ -2,6 +2,9 @@
 
 Frontend application for Geektrust Admin UI problem
 
+# Demo
+
+https://admin-ui-anirudh.netlify.app
 # Running locally
 
 ## Clone the repository
