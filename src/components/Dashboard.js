@@ -177,113 +177,116 @@ export default function Dashboard() {
 
   return (
     <div>
-      <div>
+      <div className="search">
         <input
           type="text"
-          className="search"
           placeholder="Search for users by name, email or role"
           onKeyUp={debounceSearch}
         ></input>
       </div>
-      <table className="userTable">
-        <thead>
-          <tr>
-            <th>
-              <input
-                checked={allSelected}
-                onChange={(e) => {
-                  selectAllHandler(e);
-                }}
-                type="checkbox"
-              ></input>
-            </th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Role</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {filteredUsers
-            .slice(
-              currentPageUsers.startIndex,
-              currentPageUsers.startIndex + 10
-            )
-            .map((user) => (
-              <tr
-                key={user.id}
-                style={user.selected ? { backgroundColor: "lightgrey" } : null}
-              >
-                <td>
-                  <input
-                    checked={user.selected}
-                    onChange={() => {
-                      selectedChangeHandler(user.id);
-                    }}
-                    type="checkbox"
-                  />
-                </td>
-                <td>
-                  <div
-                    style={
-                      user.editStatus ? { border: "1px solid black" } : null
-                    }
-                    contentEditable={user.editStatus}
-                    onInput={(e) => {
-                      updateHandler("name", e.target.value);
-                    }}
-                  >
-                    {user.name}
-                  </div>
-                </td>
-                <td>
-                  <div
-                    style={
-                      user.editStatus ? { border: "1px solid black" } : null
-                    }
-                    contentEditable={user.editStatus}
-                    onInput={(e) => {
-                      updateHandler("email", e.target.value);
-                    }}
-                  >
-                    {user.email}
-                  </div>
-                </td>
-                <td>
-                  <select
-                    disabled={user.editStatus ? false : true}
-                    defaultValue={user.role}
-                    onChange={(e) => {
-                      updateHandler("role", e.target.value);
-                    }}
-                  >
-                    <option value="admin">Admin</option>
-                    <option value="member">Member</option>
-                  </select>
-                </td>
-                <td>
-                  {user.editStatus ? (
-                    <>
-                      <button onClick={() => saveHandler(user.id)}>
-                        <FiSave />
+      <div style={{ overflowX: "auto" }}>
+        <table className="userTable">
+          <thead>
+            <tr>
+              <th>
+                <input
+                  checked={allSelected}
+                  onChange={(e) => {
+                    selectAllHandler(e);
+                  }}
+                  type="checkbox"
+                ></input>
+              </th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Role</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {filteredUsers
+              .slice(
+                currentPageUsers.startIndex,
+                currentPageUsers.startIndex + 10
+              )
+              .map((user) => (
+                <tr
+                  key={user.id}
+                  style={
+                    user.selected ? { backgroundColor: "lightgrey" } : null
+                  }
+                >
+                  <td>
+                    <input
+                      checked={user.selected}
+                      onChange={() => {
+                        selectedChangeHandler(user.id);
+                      }}
+                      type="checkbox"
+                    />
+                  </td>
+                  <td>
+                    <div
+                      style={
+                        user.editStatus ? { border: "1px solid black" } : null
+                      }
+                      contentEditable={user.editStatus}
+                      onInput={(e) => {
+                        updateHandler("name", e.target.value);
+                      }}
+                    >
+                      {user.name}
+                    </div>
+                  </td>
+                  <td>
+                    <div
+                      style={
+                        user.editStatus ? { border: "1px solid black" } : null
+                      }
+                      contentEditable={user.editStatus}
+                      onInput={(e) => {
+                        updateHandler("email", e.target.value);
+                      }}
+                    >
+                      {user.email}
+                    </div>
+                  </td>
+                  <td>
+                    <select
+                      disabled={user.editStatus ? false : true}
+                      defaultValue={user.role}
+                      onChange={(e) => {
+                        updateHandler("role", e.target.value);
+                      }}
+                    >
+                      <option value="admin">Admin</option>
+                      <option value="member">Member</option>
+                    </select>
+                  </td>
+                  <td>
+                    {user.editStatus ? (
+                      <>
+                        <button onClick={() => saveHandler(user.id)}>
+                          <FiSave />
+                        </button>
+                        <button onClick={() => closeHandler(user.id)}>
+                          <IoClose />
+                        </button>
+                      </>
+                    ) : (
+                      <button onClick={() => editHandler(user.id)}>
+                        <FiEdit />
                       </button>
-                      <button onClick={() => closeHandler(user.id)}>
-                        <IoClose />
-                      </button>
-                    </>
-                  ) : (
-                    <button onClick={() => editHandler(user.id)}>
-                      <FiEdit />
+                    )}
+                    <button onClick={() => deleteHandler(user.id)}>
+                      <MdDelete />
                     </button>
-                  )}
-                  <button onClick={() => deleteHandler(user.id)}>
-                    <MdDelete />
-                  </button>
-                </td>
-              </tr>
-            ))}
-        </tbody>
-      </table>
+                  </td>
+                </tr>
+              ))}
+          </tbody>
+        </table>
+      </div>
       <div style={{ display: "flex" }}>
         <button className="deleteBtn" onClick={deleteSelectedHandler}>
           Delete Selected

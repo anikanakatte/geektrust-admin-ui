@@ -1,10 +1,19 @@
 .search {
-  width: 100%;
-  padding: 0.3rem;
-  margin: 1.1rem auto;
+  border: 1.5px solid black;
+  overflow: auto;
+  border-radius: 3px;
+  margin: 1rem;
+}
+.search input[type="text"] {
+  border: 0px;
+  width: 67%;
+  padding: 10px 10px;
+}
+.search input[type="text"]:focus {
+  outline: 0;
 }
 
-.userTable {
+/* .userTable {
   border-collapse: collapse;
 }
 
@@ -15,6 +24,25 @@
 
 .userTable td {
   padding: 0.5rem;
+} */
+
+.userTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+tr:nth-of-type(odd) {
+  background: #eee;
+}
+th {
+  background: #333;
+  color: white;
+  font-weight: bold;
+}
+td,
+th {
+  padding: 6px;
+  border: 1px solid #ccc;
+  text-align: left;
 }
 
 .deleteBtn {
@@ -28,4 +56,63 @@
   color: white;
 
   font-weight: bold;
+}
+
+@media only screen and (min-width: 150px) and (max-width: 780px) {
+  .search {
+    width: 95%;
+    margin: 0 auto;
+    margin: 0.8rem;
+  }
+}
+
+@media only screen and (max-width: 760px),
+  (min-device-width: 768px) and (max-device-width: 1024px) {
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    display: block;
+  }
+
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+  tr {
+    border: 1px solid #ccc;
+  }
+  td {
+    border: none;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    padding-left: 50%;
+  }
+  td:before {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+  }
+
+  td:nth-of-type(1):before {
+    content: "Select";
+  }
+  td:nth-of-type(2):before {
+    content: "Name";
+  }
+  td:nth-of-type(3):before {
+    content: "Email";
+  }
+  td:nth-of-type(4):before {
+    content: "Role";
+  }
+  td:nth-of-type(5):before {
+    content: "Actions";
+  }
 }
